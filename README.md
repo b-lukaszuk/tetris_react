@@ -1,4 +1,4 @@
-# tetris_resct
+# tetris_react
 
 My take on classical [tetris game](https://en.wikipedia.org/wiki/Tetris).
 
