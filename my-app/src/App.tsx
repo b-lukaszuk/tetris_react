@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import './App.css';
 
-function App() {
+const App: React.FC = (): ReactElement<HTMLElement> => {
     return (
         <div className="App">
             <p>Tetris</p>
