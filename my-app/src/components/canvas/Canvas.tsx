@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useRef } from "react";
 
+import drawGrid from "./draw/drawGrid";
 import setCanvasDefaults from "./setCanvasDefaults";
 
 import "./Canvas.css";
@@ -17,6 +18,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
         if (ctx === null) {
             return undefined;
         }
+        drawGrid(canvas);
     }, []);
 
     return (
