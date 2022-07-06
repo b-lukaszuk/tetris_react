@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useRef } from "react";
 
+import drawBlock from "./draw/drawBlock";
 import drawGrid from "./draw/drawGrid";
 import setCanvasDefaults from "./setCanvasDefaults";
 
@@ -19,6 +20,9 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
             return undefined;
         }
         drawGrid(canvas);
+        drawBlock(canvas, 2, 2);
+        console.log("drawing tetris field");
+        drawBlock(canvas, 5, 5);
     }, []);
 
     return (
