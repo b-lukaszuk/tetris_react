@@ -16,17 +16,17 @@ function drawGrid(canv: HTMLCanvasElement, color: string = "darkgray"): void {
     ctx.lineWidth = lineWidth;
     ctx.beginPath()
     for (let c = 0; c < nCols; c++) {
-        ctx.moveTo(curX, 0);
-        ctx.lineTo(curX, canv.height);
+        ctx.moveTo(curX - (lineWidth / 2), 0);
+        ctx.lineTo(curX - (lineWidth / 2), canv.height);
         ctx.stroke();
-        curX += (colWidth - lineWidth / 2);
+        curX += colWidth;
     }
     ctx.beginPath()
     for (let r = 0; r < nRows; r++) {
-        ctx.moveTo(0, curY);
-        ctx.lineTo(canv.width, curY);
+        ctx.moveTo(0, curY - (lineWidth / 2));
+        ctx.lineTo(canv.width, curY - (lineWidth / 2));
         ctx.stroke();
-        curY += (rowHeight - lineWidth / 2);
+        curY += rowHeight;
     }
 }
 
