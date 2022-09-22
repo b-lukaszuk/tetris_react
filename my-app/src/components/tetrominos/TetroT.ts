@@ -1,7 +1,8 @@
+import Colors from './Colors';
 import Tetromino from './Tetromino';
 
 class TetroT extends Tetromino {
-  static color: string = 'lightred';
+  static color: Colors = Colors.RED;
   static shape: number[][] = [
     [0, 0, 0, 0],
     [1, 1, 1, 0],
