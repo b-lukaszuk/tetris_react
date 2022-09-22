@@ -2,6 +2,11 @@ import { ReactElement, useEffect, useRef } from 'react';
 
 import drawGrid from './draw/drawGrid';
 import setCanvasDefaults from './setCanvasDefaults';
+import TetroI from '../tetrominos/TetroI';
+// import TetroL from '../tetrominos/TetroL';
+// import TetroO from '../tetrominos/TetroO';
+// import TetroS from '../tetrominos/TetroS';
+// import TetroT from '../tetrominos/TetroT';
 import Tetromino from '../tetrominos/Tetromino';
 
 import './Canvas.css';
@@ -17,7 +22,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
       return undefined;
     }
     setCanvasDefaults(canvas);
-    tetrominoRef.current = new Tetromino(canvas, 'yellow');
+    tetrominoRef.current = new TetroI(canvas, 'yellow', 3, 3);
 
     tetrominoRef.current.drawFigure();
 

@@ -4,22 +4,28 @@ class Tetromino {
   private canvas: HTMLCanvasElement | null = null;
   private color: string = 'blue';
   private ctx: CanvasRenderingContext2D | null = null;
-  private shape: number[][] = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [1, 1, 1, 1],
-    [0, 0, 0, 0],
-  ];
+  private shape: number[][] = [];
   // shape's top left corner position in the gamefield grid (in rows and columns)
   private topLeftRowId: number = 3;
   private topLeftColId: number = 3;
 
-  constructor(canvas: HTMLCanvasElement, color: string, blockWidth: number = 50, blockHeight: number = 50) {
+  constructor(
+    canvas: HTMLCanvasElement,
+    color: string,
+    shape: number[][],
+    topLeftRowId: number = 3,
+    topLeftColId: number = 3,
+    blockWidth: number = 50,
+    blockHeight: number = 50
+  ) {
     this.canvas = canvas;
     this.ctx = canvas ? this.canvas.getContext('2d') : null;
     this.color = color;
     this.blockWidth = blockWidth;
     this.blockHeight = blockHeight;
+    this.shape = shape;
+    this.topLeftRowId = topLeftRowId;
+    this.topLeftColId = topLeftColId;
   }
 
   private drawSquare(rowId: number, colId: number, color: string): void {
