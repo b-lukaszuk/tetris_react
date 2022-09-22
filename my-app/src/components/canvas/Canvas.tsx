@@ -22,7 +22,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
       return undefined;
     }
     setCanvasDefaults(canvas);
-    tetrominoRef.current = new TetroI(canvas, 'yellow', 3, 3);
+    tetrominoRef.current = new TetroI(canvas, 3, 3);
 
     tetrominoRef.current.drawFigure();
 
