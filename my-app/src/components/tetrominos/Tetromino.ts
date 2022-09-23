@@ -55,6 +55,18 @@ class Tetromino {
     this.topLeftRowId++;
     this.drawFigure();
   }
+
+  public moveRight(): void {
+    this.drawFigure(Colors.BLANK); // undraw figure
+    this.topLeftColId++;
+    this.drawFigure();
+  }
+
+  public moveLeft(): void {
+    this.drawFigure(Colors.BLANK); // undraw figure
+    this.topLeftColId--;
+    this.drawFigure();
+  }
 }
 
 export default Tetromino;

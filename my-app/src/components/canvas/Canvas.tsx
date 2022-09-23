@@ -21,6 +21,24 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
     }
   };
 
+  const moveRight = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
+    if (tetromino && canvas) {
+      tetromino.moveRight();
+      drawGrid(canvas);
+    } else {
+      console.log('cannot move right');
+    }
+  };
+
+  const moveLeft = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
+    if (tetromino && canvas) {
+      tetromino.moveLeft();
+      drawGrid(canvas);
+    } else {
+      console.log('cannot move left');
+    }
+  };
+
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (canvas === null) {
@@ -37,7 +55,9 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   return (
     <div>
       <canvas width="500" height="1000" ref={canvasRef} className="canvas" />
+      <button onClick={() => moveLeft(canvasRef.current, tetrominoRef.current)}>Move left</button>
       <button onClick={() => moveDown(canvasRef.current, tetrominoRef.current)}>Move down</button>
+      <button onClick={() => moveRight(canvasRef.current, tetrominoRef.current)}>Move right</button>
     </div>
   );
 };
