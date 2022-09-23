@@ -8,14 +8,14 @@ class Tetromino {
   private ctx: CanvasRenderingContext2D | null = null;
   private shape: number[][] = [];
   // shape's top left corner position in the gamefield grid (in rows and columns)
-  private topLeftRowId: number = 3;
+  private topLeftRowId: number = -3;
   private topLeftColId: number = 3;
 
   constructor(
     canvas: HTMLCanvasElement,
     color: Colors,
     shape: number[][],
-    topLeftRowId: number = 3,
+    topLeftRowId: number = -3,
     topLeftColId: number = 3,
     blockWidth: number = 50,
     blockHeight: number = 50

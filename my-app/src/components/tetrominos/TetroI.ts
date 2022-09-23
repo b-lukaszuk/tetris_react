@@ -9,8 +9,8 @@ class TetroI extends Tetromino {
     [1, 1, 1, 1],
     [0, 0, 0, 0],
   ];
-  constructor(canvas: HTMLCanvasElement, topLeftRowId: number, topLeftColId: number) {
-    super(canvas, TetroI.color, TetroI.shape, topLeftRowId, topLeftColId);
+  constructor(canvas: HTMLCanvasElement) {
+    super(canvas, TetroI.color, TetroI.shape, -3, 3);
   }
 }
 

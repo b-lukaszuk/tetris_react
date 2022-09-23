@@ -27,7 +27,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
       return undefined;
     }
     setCanvasDefaults(canvas);
-    tetrominoRef.current = getRandomTetromino(canvas, 3, 3);
+    tetrominoRef.current = getRandomTetromino(canvas);
 
     tetrominoRef.current.drawFigure();
 
