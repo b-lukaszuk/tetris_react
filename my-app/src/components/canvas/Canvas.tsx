@@ -12,6 +12,15 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
 
   const tetrominoRef = useRef<Tetromino | null>(null);
 
+  const moveDown = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
+    if (tetromino && canvas) {
+      tetromino.moveDown();
+      drawGrid(canvas);
+    } else {
+      console.log('cannot move down');
+    }
+  };
+
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (canvas === null) {
@@ -28,6 +37,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   return (
     <div>
       <canvas width="500" height="1000" ref={canvasRef} className="canvas" />
+      <button onClick={() => moveDown(canvasRef.current, tetrominoRef.current)}>Move down</button>
     </div>
   );
 };

@@ -40,14 +40,20 @@ class Tetromino {
     this.ctx.fillRect(yStartPx, xStartPx, this.blockWidth, this.blockHeight);
   }
 
-  public drawFigure(): void {
+  public drawFigure(color: Colors = this.color): void {
     for (let r = 0; r < this.shape.length; r++) {
       for (let c = 0; c < this.shape[r].length; c++) {
         if (this.shape[r][c] === 1) {
-          this.drawSquare(this.topLeftRowId + r, this.topLeftColId + c, this.color);
+          this.drawSquare(this.topLeftRowId + r, this.topLeftColId + c, color);
         }
       }
     }
+  }
+
+  public moveDown(): void {
+    this.drawFigure(Colors.BLANK); // undraw figure
+    this.topLeftRowId++;
+    this.drawFigure();
   }
 }
 
