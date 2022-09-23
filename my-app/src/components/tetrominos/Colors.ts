@@ -3,7 +3,7 @@ enum Colors {
   ORANGE = 'orange',
   YELLOW = 'yellow',
   GREEN = 'lightgreen',
-  RED = 'lightred',
+  RED = 'red',
   BLANK = 'white',
 }
 
