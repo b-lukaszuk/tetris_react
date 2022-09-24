@@ -39,6 +39,15 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
     }
   };
 
+  const rotateFigure = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
+    if (tetromino && canvas) {
+      tetromino.rotate();
+      drawGrid(canvas);
+    } else {
+      console.log('cannot move left');
+    }
+  };
+
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (canvas === null) {
@@ -58,6 +67,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
       <button onClick={() => moveLeft(canvasRef.current, tetrominoRef.current)}>Move left</button>
       <button onClick={() => moveDown(canvasRef.current, tetrominoRef.current)}>Move down</button>
       <button onClick={() => moveRight(canvasRef.current, tetrominoRef.current)}>Move right</button>
+      <button onClick={() => rotateFigure(canvasRef.current, tetrominoRef.current)}>Rotate</button>
     </div>
   );
 };

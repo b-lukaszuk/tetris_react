@@ -70,6 +70,12 @@ class Tetromino {
     this.topLeftColId--;
     this.drawFigure();
   }
+
+  public rotate(): void {
+    this.drawFigure(Colors.BLANK); // undraw figure
+    this.curShapeId = (this.curShapeId + 1) % this.shapes.length;
+    this.drawFigure();
+  }
 }
 
 export default Tetromino;
