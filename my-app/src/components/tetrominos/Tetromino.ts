@@ -1,4 +1,5 @@
 import Colors from './Colors';
+import Shape from './Shape';
 
 class Tetromino {
   private blockHeight: number = 10;
@@ -6,7 +7,7 @@ class Tetromino {
   private canvas: HTMLCanvasElement | null = null;
   private color: Colors = Colors.BLANK;
   private ctx: CanvasRenderingContext2D | null = null;
-  private shape: number[][] = [];
+  private shape: Shape = [];
   // shape's top left corner position in the gamefield grid (in rows and columns)
   private topLeftRowId: number = -3;
   private topLeftColId: number = 3;

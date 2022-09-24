@@ -1,9 +1,10 @@
 import Colors from './Colors';
+import Shape from './Shape';
 import Tetromino from './Tetromino';
 
 class TetroI extends Tetromino {
   static color: Colors = Colors.BLUE;
-  static shape: number[][] = [
+  static shape: Shape = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [1, 1, 1, 1],
