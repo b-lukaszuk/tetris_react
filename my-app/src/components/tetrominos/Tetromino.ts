@@ -53,28 +53,26 @@ class Tetromino {
     }
   }
 
-  public moveDown(): void {
+  private undrawDoTransformationDraw(transformation: () => void) {
     this.drawFigure(Colors.BLANK); // undraw figure
-    this.topLeftRowId++;
+    transformation();
     this.drawFigure();
+  }
+
+  public moveDown(): void {
+    this.undrawDoTransformationDraw(() => this.topLeftRowId++);
   }
 
   public moveRight(): void {
-    this.drawFigure(Colors.BLANK); // undraw figure
-    this.topLeftColId++;
-    this.drawFigure();
+    this.undrawDoTransformationDraw(() => this.topLeftColId++);
   }
 
   public moveLeft(): void {
-    this.drawFigure(Colors.BLANK); // undraw figure
-    this.topLeftColId--;
-    this.drawFigure();
+    this.undrawDoTransformationDraw(() => this.topLeftColId--);
   }
 
   public rotate(): void {
-    this.drawFigure(Colors.BLANK); // undraw figure
-    this.curShapeId = (this.curShapeId + 1) % this.shapes.length;
-    this.drawFigure();
+    this.undrawDoTransformationDraw(() => (this.curShapeId = (this.curShapeId + 1) % this.shapes.length));
   }
 }
 
