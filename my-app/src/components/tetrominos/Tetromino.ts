@@ -7,7 +7,8 @@ class Tetromino {
   private canvas: HTMLCanvasElement | null = null;
   private color: Colors = Colors.BLANK;
   private ctx: CanvasRenderingContext2D | null = null;
-  private shape: Shape = [];
+  private shapes: Shape[] = [];
+  private curShapeId: number = 0;
   // shape's top left corner position in the gamefield grid (in rows and columns)
   private topLeftRowId: number = -3;
   private topLeftColId: number = 3;
@@ -15,7 +16,7 @@ class Tetromino {
   constructor(
     canvas: HTMLCanvasElement,
     color: Colors,
-    shape: number[][],
+    shapes: Shape[],
     topLeftRowId: number = -3,
     topLeftColId: number = 3,
     blockWidth: number = 50,
@@ -26,7 +27,7 @@ class Tetromino {
     this.color = color;
     this.blockWidth = blockWidth;
     this.blockHeight = blockHeight;
-    this.shape = shape;
+    this.shapes = shapes;
     this.topLeftRowId = topLeftRowId;
     this.topLeftColId = topLeftColId;
   }
@@ -42,9 +43,10 @@ class Tetromino {
   }
 
   public drawFigure(color: Colors = this.color): void {
-    for (let r = 0; r < this.shape.length; r++) {
-      for (let c = 0; c < this.shape[r].length; c++) {
-        if (this.shape[r][c] === 1) {
+    let curShape: Shape = this.shapes[this.curShapeId];
+    for (let r = 0; r < curShape.length; r++) {
+      for (let c = 0; c < curShape[r].length; c++) {
+        if (curShape[r][c] === 1) {
           this.drawSquare(this.topLeftRowId + r, this.topLeftColId + c, color);
         }
       }

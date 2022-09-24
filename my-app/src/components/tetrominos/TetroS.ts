@@ -4,14 +4,22 @@ import Tetromino from './Tetromino';
 
 class TetroS extends Tetromino {
   static color: Colors = Colors.GREEN;
-  static shape: Shape = [
-    [0, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0],
+  static shapes: Shape[] = [
+    [
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 0],
+    ],
+    [
+      [0, 0, 1, 1],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ],
   ];
   constructor(canvas: HTMLCanvasElement) {
-    super(canvas, TetroS.color, TetroS.shape, -3, 3);
+    super(canvas, TetroS.color, TetroS.shapes, -3, 3);
   }
 }
 
