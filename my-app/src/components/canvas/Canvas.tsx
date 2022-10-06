@@ -1,8 +1,8 @@
 import { ReactElement, useEffect, useRef } from 'react';
 
-import drawGrid from './draw/drawGrid';
-import setCanvasDefaults from './setCanvasDefaults';
+import GameField from '../gameField/GameField';
 import getRandomTetromino from '../tetrominos/getRandomTetromino';
+import setCanvasDefaults from './setCanvasDefaults';
 import Tetromino from '../tetrominos/Tetromino';
 
 import './Canvas.css';
@@ -11,11 +11,12 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const tetrominoRef = useRef<Tetromino | null>(null);
+  const gameFieldRef = useRef<GameField | null>(null);
 
   const moveDown = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveDown();
-      drawGrid(canvas);
+      gameFieldRef.current?.drawGrid();
     } else {
       console.log('cannot move down');
     }
@@ -24,7 +25,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const moveRight = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveRight();
-      drawGrid(canvas);
+      gameFieldRef.current?.drawGrid();
     } else {
       console.log('cannot move right');
     }
@@ -33,7 +34,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const moveLeft = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveLeft();
-      drawGrid(canvas);
+      gameFieldRef.current?.drawGrid();
     } else {
       console.log('cannot move left');
     }
@@ -42,7 +43,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const rotateFigure = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.rotate();
-      drawGrid(canvas);
+      gameFieldRef.current?.drawGrid();
     } else {
       console.log('cannot move left');
     }
@@ -55,10 +56,10 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
     }
     setCanvasDefaults(canvas);
     tetrominoRef.current = getRandomTetromino(canvas);
+    gameFieldRef.current = new GameField(canvas);
 
     tetrominoRef.current.drawFigure();
-
-    drawGrid(canvas);
+    gameFieldRef.current.drawGrid();
   }, []);
 
   return (
