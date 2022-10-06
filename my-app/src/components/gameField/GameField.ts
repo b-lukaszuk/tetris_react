@@ -1,4 +1,4 @@
-import Colors from '../tetrominos/Colors';
+import Colors from '../types/Colors';
 
 class GameField {
   private gameField: Colors[][] = [];

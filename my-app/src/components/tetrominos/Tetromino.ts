@@ -1,5 +1,5 @@
-import Colors from './Colors';
-import Shape from './Shape';
+import Colors from '../types/Colors';
+import Shape from '../types/Shape';
 
 class Tetromino {
   private blockHeight: number = 10;

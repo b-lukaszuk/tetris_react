@@ -1,5 +1,5 @@
-import Colors from './Colors';
-import Shape from './Shape';
+import Colors from '../types/Colors';
+import Shape from '../types/Shape';
 import Tetromino from './Tetromino';
 
 class TetroL extends Tetromino {
