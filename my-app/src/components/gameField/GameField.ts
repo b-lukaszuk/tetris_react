@@ -4,6 +4,8 @@ class GameField {
   private gameField: Colors[][] = [];
   private canvas: HTMLCanvasElement | null = null;
   private ctx: CanvasRenderingContext2D | null = null;
+  private blockWidth: number = 50;
+  private blockHeight: number = 50;
 
   // https://tetris.fandom.com/wiki/Tetris_Guideline
   // playfield is 10x20
@@ -26,7 +28,7 @@ class GameField {
     }
   }
 
-  public drawGrid(): void {
+  private drawGrid(): void {
     let curX: number = 0;
     let curY: number = 0;
     const lineWidth: number = 1;
@@ -53,6 +55,27 @@ class GameField {
       this.ctx.stroke();
       curY += rowHeight;
     }
+  }
+
+  private drawSquare(rowId: number, colId: number, color: string): void {
+    if (!this.ctx) {
+      return undefined;
+    }
+    this.ctx.fillStyle = color;
+    let xStartPx: number = rowId * this.blockHeight;
+    let yStartPx = colId * this.blockWidth;
+    this.ctx.fillRect(yStartPx, xStartPx, this.blockWidth, this.blockHeight);
+  }
+
+  public drawGameField(): void {
+    for (let r = 0; r < this.gameField.length; r++) {
+      for (let c = 0; c < this.gameField[r].length; c++) {
+        if (this.gameField[r][c] !== Colors.BLANK) {
+          this.drawSquare(r, c, this.gameField[r][c]);
+        }
+      }
+    }
+    this.drawGrid();
   }
 }
 

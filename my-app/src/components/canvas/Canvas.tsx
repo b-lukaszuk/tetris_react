@@ -24,7 +24,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const moveDown = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveDown();
-      gameFieldRef.current?.drawGrid();
+      gameFieldRef.current?.drawGameField();
     } else {
       console.log('cannot move down');
     }
@@ -33,7 +33,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const moveRight = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveRight();
-      gameFieldRef.current?.drawGrid();
+      gameFieldRef.current?.drawGameField();
     } else {
       console.log('cannot move right');
     }
@@ -42,7 +42,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const moveLeft = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveLeft();
-      gameFieldRef.current?.drawGrid();
+      gameFieldRef.current?.drawGameField();
     } else {
       console.log('cannot move left');
     }
@@ -51,7 +51,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const rotateFigure = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.rotate();
-      gameFieldRef.current?.drawGrid();
+      gameFieldRef.current?.drawGameField();
     } else {
       console.log('cannot move left');
     }
@@ -67,7 +67,7 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
     gameFieldRef.current = new GameField(canvas);
 
     tetrominoRef.current.drawFigure();
-    gameFieldRef.current.drawGrid();
+    gameFieldRef.current.drawGameField();
   }, []);
 
   return (
