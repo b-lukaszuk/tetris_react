@@ -13,6 +13,14 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const tetrominoRef = useRef<Tetromino | null>(null);
   const gameFieldRef = useRef<GameField | null>(null);
 
+  const getNewTetromino = (canvas: HTMLCanvasElement | null) => {
+    if (canvas) {
+      tetrominoRef.current = getRandomTetromino(canvas);
+    } else {
+      console.log('no canvas no tetromino');
+    }
+  };
+
   const moveDown = (canvas: HTMLCanvasElement | null, tetromino: Tetromino | null) => {
     if (tetromino && canvas) {
       tetromino.moveDown();
@@ -65,6 +73,9 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   return (
     <div>
       <canvas width="500" height="1000" ref={canvasRef} className="canvas" />
+      <br />
+      <button onClick={() => getNewTetromino(canvasRef.current)}>Get random tetromino</button>
+      <br />
       <button onClick={() => moveLeft(canvasRef.current, tetrominoRef.current)}>Move left</button>
       <button onClick={() => moveDown(canvasRef.current, tetrominoRef.current)}>Move down</button>
       <button onClick={() => moveRight(canvasRef.current, tetrominoRef.current)}>Move right</button>
