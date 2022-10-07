@@ -40,6 +40,16 @@ class GameField {
     return false;
   }
 
+  public lockTetromiono(tetromino: Tetromino): void {
+    for (let r = 0; r < this.gameField.length; r++) {
+      for (let c = 0; c < this.gameField[r].length; c++) {
+        if (this.gameField[r][c] === Colors.BLANK && tetromino.isFieldTaken(r, c)) {
+          this.gameField[r][c] = tetromino.getColor();
+        }
+      }
+    }
+  }
+
   private drawGrid(): void {
     let curX: number = 0;
     let curY: number = 0;

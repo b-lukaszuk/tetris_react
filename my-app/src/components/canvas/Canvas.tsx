@@ -13,11 +13,19 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
   const tetrominoRef = useRef<Tetromino | null>(null);
   const gameFieldRef = useRef<GameField | null>(null);
 
-  const getNewTetromino = (canvas: HTMLCanvasElement | null) => {
-    if (canvas) {
-      tetrominoRef.current = getRandomTetromino(canvas);
+  const getNewTetromino = () => {
+    if (canvasRef.current) {
+      tetrominoRef.current = getRandomTetromino(canvasRef.current);
     } else {
       console.log('no canvas no tetromino');
+    }
+  };
+
+  const lockTetromino = () => {
+    if (tetrominoRef.current && gameFieldRef.current) {
+      gameFieldRef.current.lockTetromiono(Object.assign({}, tetrominoRef.current));
+    } else {
+      console.log('cannot lock tetromino to gamefield');
     }
   };
 
@@ -74,7 +82,8 @@ const Canvas: React.FC = (): ReactElement<HTMLElement> => {
     <div>
       <canvas width="500" height="1000" ref={canvasRef} className="canvas" />
       <br />
-      <button onClick={() => getNewTetromino(canvasRef.current)}>Get random tetromino</button>
+      <button onClick={() => getNewTetromino()}>Get random tetromino</button>
+      <button onClick={() => lockTetromino()}>Lock tetromino</button>
       <br />
       <button onClick={() => moveLeft(canvasRef.current, tetrominoRef.current)}>Move left</button>
       <button onClick={() => moveDown(canvasRef.current, tetrominoRef.current)}>Move down</button>
