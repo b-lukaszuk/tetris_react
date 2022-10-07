@@ -1,11 +1,11 @@
 import Colors from '../types/Colors';
+import Square from '../square/Square';
 
 class GameField {
   private gameField: Colors[][] = [];
   private canvas: HTMLCanvasElement | null = null;
   private ctx: CanvasRenderingContext2D | null = null;
-  private blockWidth: number = 50;
-  private blockHeight: number = 50;
+  private square: Square | null = null;
 
   // https://tetris.fandom.com/wiki/Tetris_Guideline
   // playfield is 10x20
@@ -16,6 +16,7 @@ class GameField {
     this.initializeGameField();
     this.canvas = canvas;
     this.ctx = canvas ? this.canvas.getContext('2d') : null;
+    this.square = new Square(canvas);
   }
 
   private initializeGameField(): void {
@@ -57,21 +58,13 @@ class GameField {
     }
   }
 
-  private drawSquare(rowId: number, colId: number, color: string): void {
-    if (!this.ctx) {
-      return undefined;
-    }
-    this.ctx.fillStyle = color;
-    let xStartPx: number = rowId * this.blockHeight;
-    let yStartPx = colId * this.blockWidth;
-    this.ctx.fillRect(yStartPx, xStartPx, this.blockWidth, this.blockHeight);
-  }
-
   public drawGameField(): void {
     for (let r = 0; r < this.gameField.length; r++) {
       for (let c = 0; c < this.gameField[r].length; c++) {
         if (this.gameField[r][c] !== Colors.BLANK) {
-          this.drawSquare(r, c, this.gameField[r][c]);
+          if (this.square) {
+            this.square.drawSquare(r, c, this.gameField[r][c]);
+          }
         }
       }
     }
