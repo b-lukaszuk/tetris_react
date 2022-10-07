@@ -1,5 +1,6 @@
 import Colors from '../types/Colors';
 import Square from '../square/Square';
+import Tetromino from '../tetrominos/Tetromino';
 
 class GameField {
   private gameField: Colors[][] = [];
@@ -27,6 +28,16 @@ class GameField {
       }
       this.gameField.push(row);
     }
+  }
+  public isColision(tetromino: Tetromino): boolean {
+    for (let r = 0; r < this.gameField.length; r++) {
+      for (let c = 0; c < this.gameField[r].length; c++) {
+        if (this.gameField[r][c] !== Colors.BLANK && tetromino.isFieldTaken(r, c)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   private drawGrid(): void {

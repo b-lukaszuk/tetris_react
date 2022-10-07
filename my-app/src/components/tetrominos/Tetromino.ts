@@ -38,6 +38,18 @@ class Tetromino {
     }
   }
 
+  public isFieldTaken(gameFieldRowId: number, gameFieldColId: number): boolean {
+    let curShape: Shape = this.shapes[this.curShapeId];
+    for (let r = 0; r < curShape.length; r++) {
+      for (let c = 0; c < curShape[r].length; c++) {
+        if (r === gameFieldRowId && c === gameFieldColId) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   private undrawDoTransformationDraw(transformation: () => void) {
     this.drawFigure(Colors.BLANK); // undraw figure
     transformation();
